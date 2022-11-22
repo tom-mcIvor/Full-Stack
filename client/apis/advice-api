@@ -1,0 +1,12 @@
+import request from 'superagent'
+
+export function AdviceGiver() {
+  return request
+    .get('https://api.adviceslip.com/advice')
+
+    .then((res) => {
+      // console.log('character api', res.body)
+      console.log(res)
+      return res.body
+    })
+}
