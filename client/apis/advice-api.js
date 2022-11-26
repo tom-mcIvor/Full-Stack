@@ -8,8 +8,10 @@ export function AdviceGiver() {
 
     .then((res) => {
       // console.log('character api', res.body)
-      const data = JSON.parse(res.text)
-      console.log(data.slip.advice)
+      const {
+        slip: { advice },
+      } = JSON.parse(res.text)
+      console.log(advice)
       return res.body
     })
 }
