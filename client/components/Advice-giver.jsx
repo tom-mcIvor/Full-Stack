@@ -10,6 +10,7 @@ export default function Advice() {
 
   useEffect(() => {
     const doStuff = async () => {
+      fruit()
       setAdvice(await AdviceGiver())
     }
     doStuff()

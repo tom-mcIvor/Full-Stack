@@ -19,6 +19,7 @@ router.get('/', (req, res) => {
     })
 })
 router.post('/:fruit', (req, res) => {
+  console.log('hello')
   const fruit = req.params.fruit
   fs.writeFile(path.join(__dirname, 'data.json'), fruit)
     .then(() => {
