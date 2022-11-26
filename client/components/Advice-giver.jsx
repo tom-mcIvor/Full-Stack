@@ -7,9 +7,9 @@ export default function Advice() {
 
   const [advice, setAdvice] = useState(null)
 
+
   useEffect(() => {
     const doStuff = async () => {
-      fruit()
       setAdvice(await AdviceGiver())
     }
     doStuff()

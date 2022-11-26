@@ -20,7 +20,7 @@ export function fruit() {
 
     .then((res) => {
       // console.log('character api', res.body)
-      console.log(res)
+      console.log(res.body)
       // const data = JSON.parse(res.text)
       // return data.slip.advice
     })
