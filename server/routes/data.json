@@ -1,1 +1,16 @@
-banana
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "Tom",
+            "best_fruit": 1
+        }
+    ],
+    "fruits": [
+            {
+                "id": 1,
+            "name": "banana"
+        }
+    ]
+}
+
