@@ -19,7 +19,8 @@ router.get('/', (req, res) => {
     })
 })
 router.post('/:fruit', (req, res) => {
-  fs.writeFile(path.join(__dirname, 'data.json'), JSON.stringify(req, null, 2))
+  const fruit = req.params.fruit
+  fs.writeFile(path.join(__dirname, 'data.json'), fruit)
     .then(() => res.status(500))
     .catch((e) => console.log(e))
 })

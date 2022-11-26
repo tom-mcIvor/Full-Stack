@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { AdviceGiver } from '../apis/advice-api'
+import { AdviceGiver, fruit } from '../apis/advice-api'
+
 
 
 export default function Advice() {
@@ -8,6 +9,7 @@ export default function Advice() {
 
   useEffect(() => {
     const doStuff = async () => {
+      fruit()
       setAdvice(await AdviceGiver())
     }
     doStuff()
@@ -25,3 +27,5 @@ export default function Advice() {
   )
 
 }
+
+
