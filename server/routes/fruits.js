@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
       res.status(500).json({ message: 'Something went wrong' })
     })
 })
-router.post('/:id', (req, res) => {
+router.post('/:fruit', (req, res) => {
   fs.writeFile(path.join(__dirname, 'data.json'), JSON.stringify(req, null, 2))
     .then(() => res.status(500))
     .catch((e) => console.log(e))
