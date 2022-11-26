@@ -7,8 +7,10 @@ export default function Advice() {
   const [advice, setAdvice] = useState(null)
 
   useEffect(() => {
-
-    setAdvice(AdviceGiver())
+    const doStuff = async () => {
+      setAdvice(await AdviceGiver())
+    }
+    doStuff()
   }, [])
 
   return (
