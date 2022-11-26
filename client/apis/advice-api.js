@@ -16,7 +16,7 @@ export function fruit() {
   // const hello = JSON.parse('{something: "I am a string"}')
   // console.log(hello.something)
   return request
-    .post('http://localhost:3000/api/v1/fruits/bananna')
+    .post('http://localhost:3000/api/v1/fruits/banana')
 
     .then((res) => {
       // console.log('character api', res.body)
