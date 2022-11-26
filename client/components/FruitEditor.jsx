@@ -1,24 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import { createFruit } from '../services/fruits-api'
 
 export default function FruitEditor() {
   // Ready up React state
-  const [fruit, setFruit] = useState({ name: "" })
-  const [isSaving, setIsSaving] = useState(null)
-
-  // Hydrate React State
-  useEffect(() => {
-    setIsSaving(false)
-  }, [])
+  const [fruit, setFruit] = useState({ name: "", description: "" })
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    createFruit(fruit);
     console.log('submitting fruit', fruit)
   };
 
   return (
-
     <>
-      <div {...isSaving ? 'disabled' : ''}>
+      <div>
         <form onSubmit={handleSubmit}>
           <p>Create Fruit:</p>
           <ul>
@@ -26,7 +22,20 @@ export default function FruitEditor() {
               Name:
               <input
                 value={fruit.name}
-                onChange={e => setFruit(e.target.value)}
+                onChange={e => setFruit({
+                  ...fruit,
+                  name: e.target.value
+                })}
+              ></input>
+            </li>
+            <li>
+              Description:
+              <input
+                value={fruit.description}
+                onChange={e => setFruit({
+                  ...fruit,
+                  description: e.target.value
+                })}
               ></input>
             </li>
           </ul>

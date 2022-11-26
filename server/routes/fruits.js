@@ -15,10 +15,19 @@ router.get('/', (req, res) => {
 })
 
 router.post('/:fruit', (req, res) => {
-  console.log('hello')
   const fruit = req.params.fruit
 
   db.addFruit(fruit)
+  console.log('adding fruit', fruit)
+
+  res.sendStatus(200)
+})
+
+router.delete('/:fruit_id', (req, res) => {
+  const id = req.params.fruit_id
+
+  db.deleteFruit(id)
+  console.log('deleting fruit', id)
 
   res.sendStatus(200)
 })

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getFruits } from '../services/fruits-api'
+import { getFruits, deleteFruit } from '../services/fruits-api'
 
 
 
@@ -18,7 +18,9 @@ export default function Fruits() {
     setup()
   }, [])
 
-  const fruitElements = fruits && fruits.map(fruit => <li key={fruit.id}>Fruit: {fruit.name}</li>)
+  const fruitElements = fruits && fruits.map(fruit => {
+    return <li key={fruit.id}>Fruit: {fruit.name} <button onClick={deleteFruit({ fruit })}>x</button></li>
+  })
     || <p>Loading...</p>
 
   return (
