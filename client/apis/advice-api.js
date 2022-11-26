@@ -6,7 +6,8 @@ export function AdviceGiver() {
 
     .then((res) => {
       // console.log('character api', res.body)
-      console.log(res)
+      const data = JSON.parse(res.text)
+      console.log(data)
       return res.body
     })
 }

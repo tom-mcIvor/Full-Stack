@@ -1,18 +1,16 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { AdviceGiver } from '../apis/advice-api'
 
 
-
-useEffect(){
-  AdviceGiver()
-}
-
 export default function Advice() {
-  
+  useEffect(() => {
+    AdviceGiver()
+  }, [])
 
-return (
+  return (
     <div>
-   
+       hello
     </div>
   )
+
 }
