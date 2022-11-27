@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { createFruit } from '../services/fruits-api'
 
-export default function FruitEditor() {
+export default function FruitEditor(props) {
   // Ready up React state
   const [fruit, setFruit] = useState({ name: "", description: "" })
 
   const handleSubmit = e => {
     e.preventDefault();
-
     createFruit(fruit);
+    props.fruitCreated(fruit);
     console.log('submitting fruit', fruit)
   };
 
@@ -16,7 +16,7 @@ export default function FruitEditor() {
     <>
       <div>
         <form onSubmit={handleSubmit}>
-          <p>Create Fruit:</p>
+          <p>Create Editor:</p>
           <ul>
             <li>
               Name:

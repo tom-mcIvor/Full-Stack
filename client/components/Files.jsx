@@ -34,7 +34,7 @@ export default function Files() {
   return (
 
     <>
-      <hr></hr>
+      <p>File Editing</p>
       <div>
         {JSON.stringify(file)}
       </div>

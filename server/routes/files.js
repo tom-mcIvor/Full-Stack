@@ -9,7 +9,7 @@ const router = express.Router()
 // http://localhost:3000/api/v1/files
 router.get('/', (req, res) => {
   fs.readFile(filename, 'utf8', (e, d) => {
-    if (e) res.statusCode(500)
+    if (e) res.sendStatus(500)
     else res.json(JSON.parse(d))
   })
 })
@@ -18,8 +18,11 @@ router.post('/:name', (req, res) => {
   const name = req.params.name
 
   fs.writeFile(filename, JSON.stringify({ name }), (e) => {
-    if (e) res.statusCode(500)
-    else res.statusCode(200)
+    if (e) {
+      res.sendStatus(500)
+    } else {
+      res.sendStatus(200)
+    }
   })
 })
 

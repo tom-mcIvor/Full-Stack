@@ -17,9 +17,9 @@ export default function Advice() {
 
   return (
     <>
-      <div>
-        hello
-      </div>
+      <p>
+        Advice
+      </p>
       <div>
         {advice}
       </div>
