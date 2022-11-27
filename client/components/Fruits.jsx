@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getFruits, deleteFruit, updateFruit } from '../services/fruits-api'
 
-
-
 export default function Fruits() {
   // Ready up React state
   const [fruits, setFruits] = useState(null)
@@ -39,7 +37,7 @@ export default function Fruits() {
     ])
   }
 
-  const fruitElements = fruits && fruits.map(fruit => {
+  const fruitElements = this.props.fruits && this.props.fruits.map(fruit => {
     return <li key={fruit.id}>
       {fruit.id}:
       <input value={fruit.name} onChange={e => updateFruits({
