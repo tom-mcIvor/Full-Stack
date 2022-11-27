@@ -3,8 +3,20 @@ const connection = require('./connection')
 function getFruits(db = connection) {
   return db('fruit').select()
 }
+
 function deleteFruit(id, db = connection) {
-  db('friut').del().where({ id })
+  db('fruit')
+    .where('id', id)
+    .del()
+    .then((r) => console.log(r))
+    .catch((e) => console.error(e))
+}
+function updateFruit(id, name, db = connection) {
+  db('fruit')
+    .where('id', id)
+    .update({ name })
+    .then((r) => console.log(r))
+    .catch((e) => console.error(e))
 }
 
 function addFruit(fruit, db = connection) {
@@ -22,4 +34,5 @@ module.exports = {
   getFruits,
   addFruit,
   deleteFruit,
+  updateFruit,
 }

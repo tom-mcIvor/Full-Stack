@@ -32,4 +32,14 @@ router.delete('/:fruit_id', (req, res) => {
   res.sendStatus(200)
 })
 
+router.put('/:fruit_id/:name', (req, res) => {
+  const id = req.params.fruit_id
+  const name = req.params.name
+
+  db.updateFruit(id, name)
+  console.log('update fruit', id)
+
+  res.sendStatus(200)
+})
+
 module.exports = router

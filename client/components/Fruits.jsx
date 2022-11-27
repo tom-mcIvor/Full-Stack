@@ -1,25 +1,54 @@
 import React, { useEffect, useState } from 'react'
-import { getFruits, deleteFruit } from '../services/fruits-api'
+import { getFruits, deleteFruit, updateFruit } from '../services/fruits-api'
 
 
 
 export default function Fruits() {
   // Ready up React state
-  const [fruits, setFruit] = useState(null)
+  const [fruits, setFruits] = useState(null)
 
   // Hydrate React State
   useEffect(() => {
     const setup = async () => {
 
       // setAdvice(await AdviceGiver())
-      setFruit(await getFruits())
+      setFruits(await getFruits())
     }
 
     setup()
-  }, [])
+  }, ['save'])
+
+  const deleteAnRefresh = (fruit) => {
+    deleteFruit(fruit)
+    getFruits()
+      .then((fruits) => setFruits(fruits))
+      .catch(console.error)
+  }
+
+  const updateAndRefresh = (fruit) => {
+    updateFruit(fruit)
+    getFruits()
+      .then((fruits) => setFruits(fruits))
+      .catch(console.error)
+  }
+
+  const updateFruits = (fruit) => {
+    setFruits([
+      ...fruits.filter(f => f.id !== fruit.id),
+      fruit
+    ])
+  }
 
   const fruitElements = fruits && fruits.map(fruit => {
-    return <li key={fruit.id}>Fruit: {fruit.name} <button onClick={deleteFruit({ fruit })}>x</button></li>
+    return <li key={fruit.id}>
+      {fruit.id}:
+      <input value={fruit.name} onChange={e => updateFruits({
+        ...fruit,
+        name: e.target.value
+      })}></input>
+      <button onClick={() => updateAndRefresh(fruit)}>save</button>
+      <button onClick={() => deleteAnRefresh(fruit)}>delete</button>
+    </li>
   })
     || <p>Loading...</p>
 

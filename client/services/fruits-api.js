@@ -16,8 +16,20 @@ export function createFruit(fruit) {
 }
 
 export function deleteFruit(fruit) {
+  console.log(fruit)
   return request
     .delete(`${fruit_api}fruits/${fruit.id}`)
     .then(() => true)
     .catch((e) => console.error(e))
+}
+
+export function updateFruit(fruit) {
+  console.log(fruit)
+  return (
+    request
+      .put(`${fruit_api}fruits/${fruit.id}/${fruit.name}`)
+      // .put( 'fruit_api'+fruits+'/'+ fruit.id+'/' + fruit.name)
+      .then(() => true)
+      .catch((e) => console.error(e))
+  )
 }
