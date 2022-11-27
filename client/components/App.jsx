@@ -3,6 +3,7 @@ import React from 'react'
 import Advice from './Advice-giver'
 import Fruits from './Fruits'
 import FruitEditor from './FruitEditor'
+import Files from './Files'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
         <Fruits />
         <FruitEditor />
         <Advice />
+        <Files />
       </div>
     </>
   )

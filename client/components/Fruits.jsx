@@ -16,7 +16,7 @@ export default function Fruits() {
     }
 
     setup()
-  }, ['save'])
+  }, [])
 
   const deleteAnRefresh = (fruit) => {
     deleteFruit(fruit)
