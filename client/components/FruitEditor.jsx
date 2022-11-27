@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { createFruit } from '../services/fruits-api'
 
 export default function FruitEditor(props) {
   // Ready up React state
@@ -7,7 +6,6 @@ export default function FruitEditor(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    createFruit(fruit);
     props.fruitCreated(fruit);
     console.log('submitting fruit', fruit)
   };
