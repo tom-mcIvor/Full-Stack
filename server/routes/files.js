@@ -15,9 +15,11 @@ router.get('/', (req, res) => {
 })
 
 router.post('/:name', (req, res) => {
-  fs.readFile(filename, JSON.stringify({ name }), 'utf8', (e) => {
+  const name = req.params.name
+
+  fs.writeFile(filename, JSON.stringify({ name }), (e) => {
     if (e) res.statusCode(500)
-    else res.send(200)
+    else res.statusCode(200)
   })
 })
 
