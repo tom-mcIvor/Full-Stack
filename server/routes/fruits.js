@@ -1,31 +1,45 @@
 const express = require('express')
-
-const fs = require('node:fs/promises')
-
 const db = require('../db/fruits')
-
-const path = require('path')
 
 const router = express.Router()
 
 router.get('/', (req, res) => {
   db.getFruits()
     .then((results) => {
-      res.json({ fruits: results.map((fruit) => fruit.name) })
+      res.json({ fruits: results })
     })
     .catch((err) => {
       console.log(err)
       res.status(500).json({ message: 'Something went wrong' })
     })
 })
+
 router.post('/:fruit', (req, res) => {
-  console.log('hello')
   const fruit = req.params.fruit
-  fs.writeFile(path.join(__dirname, 'data.json'), fruit)
-    .then(() => {
-      res.status(200).json({ message: '200 gets go!', fruit })
-    })
-    .catch((e) => console.log(e))
+
+  db.addFruit(fruit)
+  console.log('adding fruit', fruit)
+
+  res.sendStatus(200)
+})
+
+router.delete('/:fruit_id', (req, res) => {
+  const id = req.params.fruit_id
+
+  db.deleteFruit(id)
+  console.log('deleting fruit', id)
+
+  res.sendStatus(200)
+})
+
+router.put('/:fruit_id/:name', (req, res) => {
+  const id = req.params.fruit_id
+  const name = req.params.name
+
+  db.updateFruit(id, name)
+  console.log('update fruit', id)
+
+  res.sendStatus(200)
 })
 
 module.exports = router
