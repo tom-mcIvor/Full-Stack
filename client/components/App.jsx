@@ -3,7 +3,7 @@ import { getFruits, createFruit, deleteFruit, updateFruit } from '../services/fr
 
 import { useDispatch, useSelector } from 'react-redux'
 
-import { fetchFruit } from '../actions'
+import { fetchFruit, pushFruit } from '../actions'
 
 import Advice from './Advice-giver'
 import Fruits from './Fruits'
@@ -36,8 +36,8 @@ function App() {
   }
 
   const fruitCreated = (fruit) => {
-    createFruit(fruit)
-    refreshFruits()
+    dispatch(pushFruit(fruit))
+    // refreshFruits()
   }
 
   return (

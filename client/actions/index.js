@@ -1,12 +1,10 @@
-import { getFruits } from '../services/fruits-api'
+import { getFruits, createFruit } from '../services/fruits-api'
 
 export const SHOW_ERROR = 'SHOW_ERROR'
 
-export const ADD_FRUIT = 'ADD_FRUIT'
 export const REMOVE_FRUIT = 'REMOVE_FRUIT'
 
 export const CHANGE_FRUIT = 'CHANGE_FRUIT'
-
 
 export const SET_FRUITS = 'SET_FRUITS'
 
@@ -19,7 +17,7 @@ export function showError(errorMessage) {
 
 export function addFruit(fruit) {
   return {
-    type: ADD_FRUIT,
+    type: 'ADD_FRUIT',
     payload: fruit,
   }
 }
@@ -37,9 +35,7 @@ export function changeFruit(fruit) {
   }
 }
 export function setFruits(fruits) {
-  return { type: SET_FRUITS,
-     payload: fruits 
-    }
+  return { type: SET_FRUITS, payload: fruits }
 }
 
 export function fetchFruit() {
@@ -48,6 +44,18 @@ export function fetchFruit() {
       .then((apple) => {
         console.log(apple)
         dispatch(setFruits(apple))
+      })
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
+  }
+}
+export function pushFruit(fruit) {
+  return (dispatch) => {
+    createFruit(fruit)
+      .then((newFruit) => {
+        console.log(newFruit)
+        dispatch(addFruit(newFruit))
       })
       .catch((err) => {
         dispatch(showError(err.message))

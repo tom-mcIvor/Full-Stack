@@ -9,10 +9,13 @@ export function getFruits() {
 }
 
 export function createFruit(fruit) {
-  return request
-    .post(`${fruit_api}fruits/${fruit.name}`)
-    .then(() => true)
-    .catch((e) => console.error(e))
+  return (
+    request
+      // .post(`${fruit_api}fruits/${fruit.name}`)
+      .post(fruit_api + 'fruits/' + fruit.name)
+      .then((res) => res.body)
+      .catch((e) => console.error(e))
+  )
 }
 
 export function deleteFruit(fruit) {

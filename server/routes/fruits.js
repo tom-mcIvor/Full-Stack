@@ -20,8 +20,12 @@ router.post('/:fruit', (req, res) => {
 
   db.addFruit(fruit)
     .then((id) => {
-      console.log('this is the id from the post route', id)
-      res.sendStatus(200)
+      console.log('this is the id from the post route', id[0])
+      return db.getFruitById(id[0])
+    })
+    .then((fruit) => {
+      console.log('this is from the get fruit by id', fruit)
+      res.json(fruit)
     })
     .catch((err) => {
       console.log(err)
