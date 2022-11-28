@@ -11,19 +11,14 @@ import FruitEditor from './FruitEditor'
 import Files from './Files'
 
 function App() {
-  // const [fruits, setFruits] = useState(null)
 
   const fruits = useSelector((state) => state.fruits)
   const dispatch = useDispatch()
-console.log(fruits);
-  // Hydrate React State
+  console.log(fruits);
+
   useEffect(() => {
     dispatch(fetchFruit())
-    // const setup = async () => {
-    //   setFruits(await getFruits())
-    // }
 
-    // setup()
   }, [])
 
   const refreshFruits = () => {
