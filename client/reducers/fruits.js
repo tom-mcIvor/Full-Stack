@@ -5,6 +5,9 @@ function fruitsfunction(state = [], action) {
 
   if (type === SET_FRUITS) {
     return payload
+  }
+  if (type === 'ADD_FRUIT') {
+    return [...state, payload]
   } else {
     return state
   }

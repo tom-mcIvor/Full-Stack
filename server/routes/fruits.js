@@ -16,11 +16,21 @@ router.get('/', (req, res) => {
 
 router.post('/:fruit', (req, res) => {
   const fruit = req.params.fruit
-
-  db.addFruit(fruit)
   console.log('adding fruit', fruit)
 
-  res.sendStatus(200)
+  db.addFruit(fruit)
+    .then((id) => {
+      console.log('this is the id from the post route', id[0])
+      return db.getFruitById(id[0])
+    })
+    .then((fruit) => {
+      console.log('this is from the get fruit by id', fruit)
+      res.json(fruit)
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json({ message: 'Something went wrong' })
+    })
 })
 
 router.delete('/:fruit_id', (req, res) => {

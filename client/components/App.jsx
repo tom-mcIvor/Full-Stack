@@ -3,7 +3,7 @@ import { getFruits, createFruit, deleteFruit, updateFruit } from '../services/fr
 
 import { useDispatch, useSelector } from 'react-redux'
 
-import { fetchFruit } from '../actions'
+import { fetchFruit, pushFruit } from '../actions'
 
 import Advice from './Advice-giver'
 import Fruits from './Fruits'
@@ -11,19 +11,14 @@ import FruitEditor from './FruitEditor'
 import Files from './Files'
 
 function App() {
-  // const [fruits, setFruits] = useState(null)
 
   const fruits = useSelector((state) => state.fruits)
   const dispatch = useDispatch()
-console.log(fruits);
-  // Hydrate React State
+  console.log(fruits);
+
   useEffect(() => {
     dispatch(fetchFruit())
-    // const setup = async () => {
-    //   setFruits(await getFruits())
-    // }
 
-    // setup()
   }, [])
 
   const refreshFruits = () => {
@@ -41,8 +36,8 @@ console.log(fruits);
   }
 
   const fruitCreated = (fruit) => {
-    createFruit(fruit)
-    refreshFruits()
+    dispatch(pushFruit(fruit))
+    // refreshFruits()
   }
 
   return (
