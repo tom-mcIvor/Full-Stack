@@ -3,7 +3,7 @@ import { AdviceGiver } from '../services/advice-api'
 
 
 
-export default function Advice() {
+export default function Advice({children}) {
 
   const [advice, setAdvice] = useState(null)
 
@@ -22,6 +22,7 @@ export default function Advice() {
       </p>
       <div>
         {advice}
+        {children}
       </div>
     </>
   )

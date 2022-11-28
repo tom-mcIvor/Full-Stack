@@ -21,7 +21,6 @@ export function addFruit(fruit) {
     payload: fruit,
   }
 }
-
 export function removeFruit(fruit) {
   return {
     type: REMOVE_FRUIT,

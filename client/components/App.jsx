@@ -14,12 +14,24 @@ function App() {
 
   const fruits = useSelector((state) => state.fruits)
   const dispatch = useDispatch()
-  console.log(fruits);
+  console.log('I run every time');
+  const [weatherData, setWeatherData] = useState()
+  const [number, setNumber] = useState(0)
+
+  useEffect(() => {
+    //setWeatherData({'tomorrow' : 'Sunny'})
+    console.log('i run once')
+  }, [])
+
 
   useEffect(() => {
     dispatch(fetchFruit())
 
   }, [])
+
+  useEffect(() => {
+    console.log('Number has changed to' + number)
+  }, [number])
 
   const refreshFruits = () => {
     dispatch(fetchFruit())
@@ -48,7 +60,14 @@ function App() {
         <hr />
         <FruitEditor fruitCreated={fruitCreated} />
         <hr />
-        <Advice />
+        <div>
+        </div>
+        <button onClick={() => setNumber((intialState) => intialState + 1)}>
+          Click me to add to number
+        </button>
+        <Advice>
+          <h1>{weatherData?.tomorrow}</h1>
+        </Advice>
         <hr />
         <Files />
       </div>

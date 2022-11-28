@@ -26,6 +26,13 @@ export default function FruitEditor(props) {
                 })}
               ></input>
             </li>
+            {/* <Seeds>
+             <h2>Im a child</h2>
+            </Seeds>
+            <Seeds> */}
+              {/* <h2>THis is a second seed</h2>
+            </Seeds> */}
+
             <li>
               Description:
               <input
@@ -45,5 +52,12 @@ export default function FruitEditor(props) {
 
 }
 
+/* // const PrimaryButton = ({children}) => {
+//   return (
+//     < button style='color:red; background-color:'>
+//      {children}
+//     </ button>
+//   )
+// } */
 
 
