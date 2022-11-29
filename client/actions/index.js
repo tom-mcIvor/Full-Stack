@@ -1,4 +1,4 @@
-import { getFruits, createFruit } from '../services/fruits-api'
+import { getFruits, createFruit, deleteFruit } from '../services/fruits-api'
 
 export const SHOW_ERROR = 'SHOW_ERROR'
 
@@ -55,6 +55,17 @@ export function pushFruit(fruit) {
       .then((newFruit) => {
         console.log(newFruit)
         dispatch(addFruit(newFruit))
+      })
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
+  }
+}
+export function delFruit(fruit) {
+  return (dispatch) => {
+    deleteFruit(fruit)
+      .then(() => {
+        dispatch(removeFruit(fruit))
       })
       .catch((err) => {
         dispatch(showError(err.message))

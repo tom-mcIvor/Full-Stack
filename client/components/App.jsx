@@ -3,7 +3,7 @@ import { getFruits, createFruit, deleteFruit, updateFruit } from '../services/fr
 
 import { useDispatch, useSelector } from 'react-redux'
 
-import { fetchFruit, pushFruit } from '../actions'
+import { fetchFruit, pushFruit, delFruit } from '../actions'
 
 import Advice from './Advice-giver'
 import Fruits from './Fruits'
@@ -26,7 +26,6 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchFruit())
-
   }, [])
 
   useEffect(() => {
@@ -38,8 +37,9 @@ function App() {
   }
 
   const deleteAnRefresh = (fruit) => {
-    deleteFruit(fruit)
-    refreshFruits()
+
+    dispatch(delFruit(fruit))
+    // refreshFruits()
   }
 
   const updateAndRefresh = (fruit) => {

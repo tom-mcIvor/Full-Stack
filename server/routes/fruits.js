@@ -37,9 +37,11 @@ router.delete('/:fruit_id', (req, res) => {
   const id = req.params.fruit_id
 
   db.deleteFruit(id)
+
   console.log('deleting fruit', id)
 
   res.sendStatus(200)
+  //res.json({id})
 })
 
 router.put('/:fruit_id/:name', (req, res) => {
